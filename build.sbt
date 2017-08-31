@@ -73,3 +73,5 @@ libraryDependencies += "org.typelevel" %% "cats" % "0.9.0"
 // To learn more about multi-project builds, head over to the official sbt
 // documentation at http://www.scala-sbt.org/documentation.html
 
+libraryDependencies += "edu.stanford.nlp" % "stanford-corenlp" % "3.8.0" artifacts (Artifact("stanford-corenlp", "models"), Artifact("stanford-corenlp"))
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"

@@ -13,5 +13,5 @@ Mini project in information retrieval course
 
 ```
 $ sbt
-> run
+> container:start
 ```

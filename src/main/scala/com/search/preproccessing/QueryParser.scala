@@ -40,25 +40,25 @@ class QueryParser(query: String) {
   def parseUnary : Expression = {
     if (current >= tokens.size || tokens(current) == "-rrb-")
       return null
+
+    if (tokens(current) == "-lrb-") {
+      current += 1 // open brackets
+      var left = parseBinary()
+      while (tokens(current) != "-rrb-" && current < tokens.size) {
+        val operator = getBinOperator()
+        val right = parseBinary()
+        left = if (right != null)
+          new BinExpression(left, operator, right)
+        else left
+      }
+      current += 1 // close brackets
+      return left
+    }
+
     if (tokens(current) == "!") {
       current += 1
-      if (tokens(current) == "-lrb-") {
-        current += 1 // open brackets
-        var left = parseBinary()
-        while (tokens(current) != "-rrb-" && current < tokens.size) {
-          val operator = getBinOperator()
-          val right = parseBinary()
-          left = if (right != null)
-              new BinExpression(left, operator, right)
-          else left
-        }
-        current += 1 // close brackets
-        return new NotExpression(left)
-      } else {
-        val ex = new NotExpression(new UnExpression(tokens(current)))
-        current += 1
-        return ex
-      }
+      val ex = new NotExpression(parseUnary)
+      return ex
     }
     val expr = new UnExpression(tokens(current))
     current += 1

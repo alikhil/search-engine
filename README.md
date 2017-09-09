@@ -28,3 +28,6 @@ Initial screen.
 
 After pressing `Build Index`
 ![image](https://user-images.githubusercontent.com/7482065/30243806-20a0b71c-95ba-11e7-971a-b699781cba97.png)
+
+Enter query and press `Search`
+![image](https://user-images.githubusercontent.com/7482065/30243590-7aa9bd58-95b5-11e7-963c-cc396d034b21.png)

@@ -39,11 +39,7 @@
 
             <div class="col-lg-12 col-md-12, col-sm-12 col-xs-12">
                 <div class="col-lg-8 col-md-8, col-sm-8 col-xs-8">
-                    @if(indexStatus == indexed) {
-                        <input class="form-control" id='query' title="search">
-                    } else {
-                        <input class="form-control disabled" id='query' title="search">
-                    }
+                        <input class="form-control @{ if (indexStatus == indexed) "" else "disabled" }" id='query' placeholder="enter your query here" title="search">
                 </div>
                 <div class="col-lg-2 col-md-2, col-sm-2 col-xs-2">
                     <input class="btn btn-success" style="width: 100%" id='link' type="submit" value='Search' @{ if (indexStatus == indexed) "" else "disabled" }>

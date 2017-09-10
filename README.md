@@ -22,7 +22,7 @@ $ sbt
 7. Enter your query and press `Search`.
 8. See the results.
 
-P.S. Indexing may take a while. Please, don't press `Rebuild Index` without any needs.
+P.S. Indexing may take a while. Please, don't press `Rebuild Index` without no needs.
 
 ## Architecture Design
 

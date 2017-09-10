@@ -26,10 +26,16 @@ class SearchingController extends ScalatraServlet with JacksonJsonSupport {
       Response("error", "Index is not built")
     else {
       val query = new QueryParser(params.getOrElse("query", "information retrieval"))
-      val expr = query.parse
-      val docs = expr.evalueateQuery(SearchEngine.index)
+      try {
+        val expr = query.parse
+        val docs = expr.evalueateQuery(SearchEngine.index)
+        Response("ok", DocReader.readDocsByIds(docs), query.doc.cleanedLemmas().mkString(" "))
+      } catch {
+        case _: Throwable => {
+          Response("error", "Invalid query")
+        }
+      }
 
-      Response("ok", DocReader.readDocsByIds(docs), query.doc.cleanedLemmas().mkString(" "))
     }
 
   }

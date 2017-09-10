@@ -88,4 +88,7 @@ libraryDependencies ++= Seq(
 
 enablePlugins(SbtTwirl)
 
-seq(webSettings :_*)
+jettyPort in container := 9090
+enablePlugins(XwpJetty)
+
+//seq(webSettings :_*)

@@ -1,7 +1,11 @@
 # search-engine
-Mini project in information retrieval course
+Mini search engine based on [Inverted Index](https://en.wikipedia.org/wiki/Inverted_index).
 
-## Getting start
+## Dataset
+
+[Dataset](https://github.com/alikhil/search-engine/tree/master/dataset) contains about 6000 article abstracts from LISA collection.
+
+## Getting started
 
 1. Ensure that you have Java 8 JDK (`javac -version` should result with `javac 1.8.*`)
 1. Install [sbt](http://www.scala-sbt.org/download.html)
@@ -20,6 +24,40 @@ $ sbt
 
 P.S. Indexing may take a while. Please, don't press `Rebuild Index` without any needs.
 
+## Architecture Design
+
+### User Interface
+
+I have choosen Web as UI, because it easier and faster for me to develop.
+
+Used tools:
+
+* [Bootstrap 3](http://getbootstrap.com/) template
+* Hiltor.js - for highlighting query in results
+* WatingDialag.js
+* Scalatra - for backend
+
+### Parsing Documents
+
+To build index all documents in files from `dataset` directory which satisfy regexp `^LISA\d\.\d{3}` are used.
+
+All tokens containing numbers and charecters like `.,:?@$%^*` are removed.
+
+Then documents are lemmanized using [Standford NLP](https://stanfordnlp.github.io) library.
+
+### Index
+
+Index is stored in RAM as scala `Map` data structure, where key is a term and value is a list of document in which that term exists.
+
+After building index it saved to disk as `index.bin` file and can be read on next program start.
+
+### Boolean Queries
+
+Current implementation supports OR(|), AND(&), NOT(!) operators and grouping them with parenthesis. Also operator AND can be ommited.
+
+For example `(Innoplis University) | (MIT & USA)`  request with such query with respond with documents containg either **Innopoli University** or **MIT USA** somewhere in document.
+
+**Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
 ## Screenshots
 
 Initial screen.

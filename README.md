@@ -13,7 +13,7 @@ $ sbt
 > container:start
 ```
 
-5. Navigate to [localhost:8080](http://localhost:9090)
+5. Navigate to [localhost:9090](http://localhost:9090)
 6. Press `Build Index` button to index all the documents. Wait
 7. Enter your query and press `Search`.
 8. See the results.

@@ -43,7 +43,7 @@ To build index all documents in files from `dataset` directory which satisfy reg
 
 All tokens containing numbers and charecters like `.,:?@$%^*` are removed.
 
-Then documents are lemmanized using [Standford NLP](https://stanfordnlp.github.io) library.
+Then documents are lemmanized using [Standford NLP](https://stanfordnlp.github.io/CoreNLP/index.html) library.
 
 ### Index
 
@@ -58,6 +58,7 @@ Current implementation supports OR(|), AND(&), NOT(!) operators and grouping the
 For example `(Innoplis University) | (MIT & USA)`  request with such query with respond with documents containg either **Innopoli University** or **MIT USA** somewhere in document.
 
 **Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
+
 ## Screenshots
 
 Initial screen.

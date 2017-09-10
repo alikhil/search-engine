@@ -6,9 +6,9 @@ $(document).ready(function () {
     myHilitor.setMatchType("left");
 
     function warn(message, color) {
-        color = color | "danger";
+        color = color || "danger";
         $("#dialogs")
-            .append("<div class=\"alert alert-" + color + "\" id=\"result\">" + message + "</div>")
+            .append("<div class=\"alert alert-" + color + "\">" + message + "</div>")
     }
 
     $("#buildIndexBtn").click(function() {
@@ -26,7 +26,7 @@ $(document).ready(function () {
             success: function (data) {
                 $("#dialogs")
                     .html("")
-                    .append("<div class=\"alert alert-info\" id=\"result\">" + data + "</div>");
+                    .append("<div class=\"alert alert-info\">" + data + "</div>");
                 $("#link").attr("disabled", false);
             },
             error: function (jqXHR, status, thrown) {
@@ -90,6 +90,6 @@ $(document).ready(function () {
         console.log(data);
     }
     function printItem(item) {
-        $('#result').append("<div class=\"alert alert-success\" id=\"result\">" + item + "</div>");
+        $('#result').append("<div class=\"alert alert-success\">" + item + "</div>");
     }
 });

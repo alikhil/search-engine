@@ -14,7 +14,7 @@ $(document).ready(function () {
     $("#buildIndexBtn").click(function() {
         console.log("build btn clicked");
         $("#link").attr("disabled", true);
-        waitingDialog.show("Please wait! It can take time.", {dialogSize: 'sm', progressType: 'info'})
+        waitingDialog.show("Please wait! It can take a while.", {dialogSize: 'sm', progressType: 'info'})
         $.ajax({
             url: "/buildIndex",
             method: "post",

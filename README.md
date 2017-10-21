@@ -59,8 +59,10 @@ For example `(Innopolis University) | (MIT & USA)`  request with such query with
 
 **Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
 
-## Screenshots
-
+### Screenshots
+<details>
+    <summary>Expand</summary>
+    
 Initial screen.
 
 ![image](https://user-images.githubusercontent.com/7482065/30243791-f6827fba-95b9-11e7-9426-a4e47f5487fa.png)
@@ -70,3 +72,4 @@ After pressing `Build Index`
 
 Enter query and press `Search`
 ![image](https://user-images.githubusercontent.com/7482065/30243590-7aa9bd58-95b5-11e7-963c-cc396d034b21.png)
+</details>

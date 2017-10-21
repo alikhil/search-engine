@@ -55,7 +55,7 @@ After building index it saved to disk as `index.bin` file and can be read on nex
 
 Current implementation supports OR(|), AND(&), NOT(!) operators and grouping them with parenthesis. Also operator AND can be ommited.
 
-For example `(Innoplis University) | (MIT & USA)`  request with such query with respond with documents containg either **Innopoli University** or **MIT USA** somewhere in document.
+For example `(Innopolis University) | (MIT & USA)`  request with such query with respond with documents containg either **Innopolis University** or **MIT USA** somewhere in document.
 
 **Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
 

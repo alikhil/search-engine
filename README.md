@@ -1,4 +1,5 @@
 # search-engine
+
 Mini search engine based on [Inverted Index](https://en.wikipedia.org/wiki/Inverted_index).
 
 ## Dataset
@@ -59,10 +60,11 @@ For example `(Innopolis University) | (MIT & USA)`  request with such query with
 
 **Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
 
-### Screenshots
+## Screenshots
+
 <details>
     <summary>Expand</summary>
-    
+
 Initial screen.
 
 ![image](https://user-images.githubusercontent.com/7482065/30243791-f6827fba-95b9-11e7-9426-a4e47f5487fa.png)

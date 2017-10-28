@@ -96,5 +96,7 @@ Enter query and press `Search`
 ![image](https://user-images.githubusercontent.com/7482065/32135131-7b107610-bc02-11e7-863a-620abadd92b8.png)
 
 Schema of index
+
 ![image](https://user-images.githubusercontent.com/7482065/32136557-6651eb1c-bc18-11e7-8794-e9e25aca9a55.png)
+
 </details>

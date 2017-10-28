@@ -26,14 +26,22 @@ class SearchingController extends ScalatraServlet with JacksonJsonSupport {
       Response("error", "Index is not built")
     else {
       val query = new QueryParser(params.getOrElse("query", "information retrieval"))
-      try {
-        val expr = query.parse
-        val docs = expr.evalueateQuery(SearchEngine.index)
-        Response("ok", DocReader.readDocsByIds(docs), query.doc.cleanedLemmas().mkString(" "))
-      } catch {
-        case _: Throwable => {
-          Response("error", "Invalid query")
+      val searchType = params.getOrElse("type", "ranked")
+      if (searchType == "boolean") {
+        try {
+          val expr = query.parse
+          val docs = expr.evalueateQuery(SearchEngine.index)
+          Response("ok", DocReader.readDocsByIds(docs), query.doc.cleanedLemmas().mkString(" "))
+        } catch {
+          case _: Throwable => {
+            Response("error", "Invalid query!")
+          }
         }
+      } else {
+        val (docs, total) = SearchEngine.index.searchRanked(query.doc)
+        val docIds = docs.map(_._2).toList
+        val scores = docs.map(_._1).toList
+        Response("ok", DocReader.readDocsByIds(docIds), query.doc.cleanedLemmas().mkString(" "), total, scores)
       }
 
     }
@@ -49,4 +57,4 @@ class SearchingController extends ScalatraServlet with JacksonJsonSupport {
     }
   }
 }
-case class Response[T](status: String, data: T = null, words: String = null)
+case class Response[T](status: String, data: T = null, words: String = null, total: Int = 0, scores: List[Double] = null)

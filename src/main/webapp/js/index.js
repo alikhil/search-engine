@@ -79,10 +79,11 @@ $(document).ready(function () {
                 return;
             }
             var items = response.data;
+            var scores = response.scores;
             if (items.length === 0)
-                printItem("Nothing found with query:" + $("#query").val())
+                printItem("Nothing found with query:" + $("#query").val());
             for (var i = 0; i < items.length; i++) {
-                printItem(items[i]);
+                printItem(`Score: ${scores[i]}<br/>${items[i]}`);
             }
             myHilitor.apply(response.words);
         }

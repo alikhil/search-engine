@@ -62,6 +62,7 @@ For evaluation query *Machine Learning* was used. The engine marked 100 document
 I labeled them by hand and find out that there is only 8 relevant documents. Result is [here](https://github.com/alikhil/search-engine/blob/master/dataset/EVAL).
 
 Only 4 of 20 documents returned in response are relevant:
+
 |               | Relevant | Nonrelevant |
 |---------------|----------|-------------|
 | Retrived      |4         |16           |

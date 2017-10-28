@@ -85,7 +85,7 @@ trait Expression {
 
 class UnExpression(token: String) extends Expression {
   override def evalueateQuery(index: InvertedIndex): List[Int] = {
-    index.getTermPostings(token).getOrElse(ListBuffer()).toList
+    index.getTermPostings(token).toList
   }
 }
 

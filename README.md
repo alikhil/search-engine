@@ -48,17 +48,36 @@ Then documents are lemmanized using [Standford NLP](https://stanfordnlp.github.i
 
 ### Index
 
-Index is stored in RAM as scala `Map` data structure, where key is a term and value is a list of document in which that term exists.
+Index is stored in RAM as scala `Map` data structure, where key is a term and value is a sorted map where key is document id in which that term exists and value is *term frequency*.
 
 After building index it saved to disk as `index.bin` file and can be read on next program start.
 
-### Boolean Queries
+### Ranked Search
 
-Current implementation supports OR(|), AND(&), NOT(!) operators and grouping them with parenthesis. Also operator AND can be ommited.
+Now, engine returns first 20 results sorted by descending of their scores. For ranking **ltc.lnc** is used.
 
-For example `(Innopolis University) | (MIT & USA)`  request with such query with respond with documents containg either **Innopolis University** or **MIT USA** somewhere in document.
+## Evaluation
 
-**Operators priority depends on their relative position. Please use parenthesis to define order of operations.**
+For evaluation query *Machine Learning* was used. The engine marked 100 documents as relevant for this query.
+I labeled them by hand and find out that there is only 8 relevant documents. Result is [here](https://github.com/alikhil/search-engine/blob/master/dataset/EVAL).
+
+Only 4 of 20 documents returned in response are relevant:
+|               | Relevant | Nonrelevant |
+|---------------|----------|-------------|
+| Retrived      |4         |16           |
+| Not Retrieved |4         |76           |
+
+Recall = 4 / (4 + 4) = 0.5
+
+Precision = 4 / (4 + 16) = 0.2
+
+F1 = 2 * (Precision * Recall) / (Precion + Recall) = 0.29
+
+## Changes from previous version
+
+* Inverted index was updated to store not only document ids, but also term frequencies.
+
+* Ranking method with cosince similarity was implemented.
 
 ## Screenshots
 
@@ -67,11 +86,11 @@ For example `(Innopolis University) | (MIT & USA)`  request with such query with
 
 Initial screen.
 
-![image](https://user-images.githubusercontent.com/7482065/30243791-f6827fba-95b9-11e7-9426-a4e47f5487fa.png)
+![image](https://user-images.githubusercontent.com/7482065/32135143-c88cb7b4-bc02-11e7-92ef-7d42cc4e28ad.png)
 
 After pressing `Build Index`
 ![image](https://user-images.githubusercontent.com/7482065/30243806-20a0b71c-95ba-11e7-971a-b699781cba97.png)
 
 Enter query and press `Search`
-![image](https://user-images.githubusercontent.com/7482065/30243590-7aa9bd58-95b5-11e7-963c-cc396d034b21.png)
+![image](https://user-images.githubusercontent.com/7482065/32135131-7b107610-bc02-11e7-863a-620abadd92b8.png)
 </details>
